@@ -1,2 +1,2 @@
-# Clustering_ml
-It's shown how to using clustering for working with pictures here.
+# ML methods
+It's shown how to use ML methods for analysis.
