@@ -1,0 +1,19 @@
+import pandas as pd
+import numpy as np
+from sklearn.tree import DecisionTreeClassifier
+
+data=pd.read_csv('titanic.csv')
+data['gender_factor']=pd.factorize(data.Sex)[0]
+
+
+data_new=data[['Survived','Pclass','Fare','Age','gender_factor']].dropna()
+data_survived=data_new[['Survived']].to_numpy()
+
+data_selection=data_new[['Pclass','Fare','Age','gender_factor']].to_numpy()
+data_surv=np.reshape(data_survived,714)
+
+clf=DecisionTreeClassifier(random_state=241)
+clf.fit(data_selection,data_surv)
+importances=clf.feature_importances_
+
+print(importances)
